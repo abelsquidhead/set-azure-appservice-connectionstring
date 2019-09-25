@@ -1,10 +1,20 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'set-azure-appservice-connectionstring'
+description: 'This Action sets a connection string setting in an Azure App Service instance'
+author: 'abelsquidhead'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  resourceGroup:
+    description: 'The name of the resource group which the database resides in'
+    required: true
+  appService:
+    description: 'The name of your Azure App Service instance'
+    required: true
+  connectionStringType:
+    description: 'The type of database this connection string is for. Values can be MySQL, SQLServer, SQLAzure, PostgreSQL, Custom'
+    default: 'SQLAzure'
+    required: false
+  connectionString:
+    description: 'The actual connection string value'
+    required: true
 runs:
   using: 'node12'
   main: 'lib/main.js'

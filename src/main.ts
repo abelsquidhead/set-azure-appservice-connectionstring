@@ -3,14 +3,22 @@ import {wait} from './wait'
 
 async function run() {
   try {
-    const ms = core.getInput('milliseconds');
-    console.log(`Waiting ${ms} milliseconds ...`)
+    // get input value for resource group
+    const resourceGroup = core.getInput('resourceGroup');
+    console.log('resourceGroup: ${resourceGroup}');
 
-    core.debug((new Date()).toTimeString())
-    wait(parseInt(ms));
-    core.debug((new Date()).toTimeString())
+    //get input value for app service name
+    const appService = core.getInput('appService');
+    console.log('appService: ${appService}');
 
-    core.setOutput('time', new Date().toTimeString());
+    // get inptu value for the type of connection string
+    const connectionStringType = core.getInput('connectionStringType');
+    console.log('connectionStringType: ${connectionStringType}');
+
+    // get input value for the connection string
+    const connectionString = core.getInput('connectionString');
+    console.log('connectionString: ${connectionString}');
+
   } catch (error) {
     core.setFailed(error.message);
   }

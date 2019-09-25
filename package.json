@@ -1,5 +1,5 @@
 {
-  "name": "typescript-action",
+  "name": "set-azure-appservice-connectionstring",
   "version": "0.0.0",
   "private": true,
   "description": "JavaScript template action",
@@ -17,7 +17,7 @@
     "node",
     "setup"
   ],
-  "author": "YourNameOrOrganization",
+  "author": "abelsquidhead",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.0.0"
