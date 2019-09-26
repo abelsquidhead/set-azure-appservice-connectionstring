@@ -69,7 +69,7 @@ export class ConnectionStringSetter {
         console.log("        bash script path: " + bashScriptPath);
         
         // craft the command line call
-        let commandLineCall = `sh ${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
+        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
         console.log("        commandLineCall: " + commandLineCall);
         
         // call bash script 
