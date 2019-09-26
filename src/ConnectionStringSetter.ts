@@ -1,17 +1,15 @@
-import * as core from '@actions/core';
-
 export class ConnectionStringSetter {
     resourceGroup: string;
     appService: string;
     connectionStringType: string;
     connectionString: string;
 
-    constructor() {
+    constructor(coreLib) {
         // get all the inputs
-        this.resourceGroup = core.getInput('resourceGroup');
-        this.appService = core.getInput('appService');
-        this.connectionStringType = core.getInput('connectionStringType');
-        this.connectionString = core.getInput('connectionString');
+        this.resourceGroup = coreLib.getInput('resourceGroup');
+        this.appService = coreLib.getInput('appService');
+        this.connectionStringType = coreLib.getInput('connectionStringType');
+        this.connectionString = coreLib.getInput('connectionString');
     }
 
     setConnectionString() {
