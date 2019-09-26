@@ -2,6 +2,15 @@ name: 'set-azure-appservice-connectionstring'
 description: 'This Action sets a connection string setting in an Azure App Service instance'
 author: 'abelsquidhead'
 inputs:
+  servicePrincipal:
+    description: 'The Azure service principal used to update the Azure App Service'
+    required: true
+  servicePrincipalTenant:
+    description: 'The Tenant ID for the service principal'
+    required: true
+  servicePrincipalSecret:
+    description: 'The service principal secret'
+    required: true
   resourceGroup:
     description: 'The name of the resource group which the database resides in'
     required: true
