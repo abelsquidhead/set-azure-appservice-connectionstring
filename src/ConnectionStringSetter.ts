@@ -74,11 +74,11 @@ export class ConnectionStringSetter {
         
         // call bash script 
         let self = this;
-        this._exec(commandLineCall, function(err, stdout, stderr) {
+        this._exec("sh " + commandLineCall, function(err, stdout, stderr) {
             if (err) {
                 // should have err.code
-                console.log("        fuck! error occured. Error code: " + err.code); 
-                console.log("        error: " + err);
+                // console.log("        fuck! error occured. Error code: " + err.code); 
+                // console.log("        error: " + err);
             }
             console.log(stdout);
             console.log("Done setting connection string");
