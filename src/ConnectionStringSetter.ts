@@ -20,7 +20,7 @@ export class ConnectionStringSetter {
         let servicePrincipal: string = this._coreLib.getInput('servicePrincipal');
         let servicePrincipalTenant: string = this._coreLib.getInput('servicePrincipalTenant');
         let servicePrincipalSecret: string = this._coreLib.getInput('servicePrincipalSecret');
-        let azureSubscriptionName: string = this._coreLib.getInput('azureSubsdriptionName');
+        let azureSubscriptionName: string = this._coreLib.getInput('azureSubscriptionName');
         let resourceGroup: string = this._coreLib.getInput('resourceGroup');
         let appService:string = this._coreLib.getInput('appService');
         let connectionStringType: string = this._coreLib.getInput('connectionStringType');
