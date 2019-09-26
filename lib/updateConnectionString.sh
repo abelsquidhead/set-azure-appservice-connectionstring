@@ -44,17 +44,11 @@ echo ""
 # This sets the default subscription
 #
 echo "Setting default azure subscription..."
-responseString=$(az account set \
-    --subscription $azureSubscriptionName)
-echo "$responseString"
+az account set \
+    --subscription $azureSubscriptionName
 echo "Done setting default subscription"
 echo ""
 
 echo "Setting connection string.."
-responseString=$(az webapp config connection-string set \
-    --name $webAppName \
-    --connection-string-type "SQLAzure" \
-    --resource-group $resourceGroupName \
-    --settings "$connectionStringName"="$connectionString")
-echo "$responseString"
+az webapp config connection-string set --name abel --connection-string-type SQLAzure --resource-group testconnstringaction-rg --settings DefaultConnection="Server=tcp:abel-mhdbserver.database.windows.net,1433;Initial Catalog=abel-mhdb;Persist Security Info=False;User ID=abel;Password=g83P@BxDXma7;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 echo "Done setting connection string"
