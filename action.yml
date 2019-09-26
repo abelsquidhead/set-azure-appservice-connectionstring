@@ -27,6 +27,10 @@ inputs:
   connectionString:
     description: 'The actual connection string value'
     required: true
+  connectionStringName:
+    description: 'Name of the connection string'
+    default: 'DefaultConnection'
+    required: false
 runs:
   using: 'node12'
   main: 'lib/main.js'

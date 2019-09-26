@@ -9,11 +9,21 @@ servicePrincipal=$1
 servicePrincipalTenant=$2
 servicePrincipalSecret=$3
 azureSubscriptionName=$4
+resourceGroup=$5
+appService=$6
+connectionStringType=$7
+connectionString=$8
+connectionStringName=$9
 
 echo "servicePrincipal: $servicePrincipal"
 echo "servicePrincipalTenat: $servicePrincipalTenant"
 echo "servicePrincipalSecret: $servicePrincipalSecret"
 echo "azureSubcriptionName: $azureSubscriptionName"
+echo "resourceGroup: $resourceGroup"
+echo "appService: $appService"
+echo "connectionStringType: $connectionStringType"
+echo "connectionString: $connectionString"
+echo "connectionStringName: $connectionStringName"
 echo ""
 
 
@@ -39,11 +49,9 @@ az account set \
 echo "Done setting default subscription"
 echo ""
 
-# # This creates the resource group used to house this application
-# #
-# echo "Creating resource group $IAC_EXCLUSIVE_RESOURCEGROUPNAME in region $IAC_RESOURCEGROUPREGION"
-# az group create \
-#     --name $IAC_EXCLUSIVE_RESOURCEGROUPNAME \
-#     --location $IAC_RESOURCEGROUPREGION
-# echo "Done creating resource group"
-# echo ""
+echo "Setting connection string.."
+az webapp config connection-string set \
+    --name $webAppName \
+    --connection-string-type "SQLAzure" \
+    --resource-group $resourceGroupName \
+    --settings $connectionStringName="$connectionString"

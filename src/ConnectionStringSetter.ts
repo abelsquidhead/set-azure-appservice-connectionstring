@@ -25,6 +25,7 @@ export class ConnectionStringSetter {
         let appService:string = this._coreLib.getInput('appService');
         let connectionStringType: string = this._coreLib.getInput('connectionStringType');
         let connectionString: string = this._coreLib.getInput('connectionString');
+        let connectionStringName: string = this._coreLib.getInput('connectionStringName');
 
         // ouptut inputs
         console.log("input params:")
@@ -36,7 +37,7 @@ export class ConnectionStringSetter {
         console.log('    appService: ' + appService);
         console.log('    connectionStringType: ' + connectionStringType);
         console.log('    connectionString: ' + connectionString);
-
+        console.log('    connectionStringName: ' + connectionStringName);
         console.log('');
 
         // setting connection string based on linux/win platform
@@ -53,7 +54,8 @@ export class ConnectionStringSetter {
                                              resourceGroup,
                                              appService,
                                              connectionStringType,
-                                             connectionString);
+                                             connectionString,
+                                             connectionStringName);
         }
 
 
@@ -67,13 +69,15 @@ export class ConnectionStringSetter {
                                         resourceGroup: string,
                                         appService: string,
                                         connectionStringType: string,
-                                        connectionString) {
+                                        connectionString: string,
+                                        connectionStringName: string) 
+    {
         // figure out where the bash script is to set the connectin string
         let bashScriptPath = this._libRootPath + "/updateConnectionString.sh"
         console.log("        bash script path: " + bashScriptPath);
         
         // craft the command line call
-        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
+        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString} ${connectionStringName}`;
         console.log("        commandLineCall: " + commandLineCall);
         console.log("");
         
