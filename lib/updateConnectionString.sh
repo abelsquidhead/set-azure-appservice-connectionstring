@@ -50,5 +50,9 @@ echo "Done setting default subscription"
 echo ""
 
 echo "Setting connection string.."
-az webapp config connection-string set --name abel --connection-string-type SQLAzure --resource-group testconnstringaction-rg --settings DefaultConnection="Server=tcp:abel-mhdbserver.database.windows.net,1433;Initial Catalog=abel-mhdb;Persist Security Info=False;User ID=abel;Password=g83P@BxDXma7;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+az webapp config connection-string set \
+    --name $appService \
+    --connection-string-type $connectionStringType \
+    --resource-group $resourceGroup \
+    --settings $connectionStringName="$connectionString"
 echo "Done setting connection string"
