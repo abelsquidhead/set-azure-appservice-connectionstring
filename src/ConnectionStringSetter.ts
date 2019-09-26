@@ -4,12 +4,21 @@ export class ConnectionStringSetter {
     connectionStringType: string;
     connectionString: string;
 
-    constructor(coreLib) {
+    private _platform: string;
+    private _coreLib;
+
+    constructor(coreLib, 
+                platform: string) 
+    {
+
         // get all the inputs
         this.resourceGroup = coreLib.getInput('resourceGroup');
         this.appService = coreLib.getInput('appService');
         this.connectionStringType = coreLib.getInput('connectionStringType');
         this.connectionString = coreLib.getInput('connectionString');
+
+        this._platform = platform;
+        this._coreLib = coreLib;
     }
 
     setConnectionString() {
@@ -21,13 +30,27 @@ export class ConnectionStringSetter {
         console.log('');
 
         console.log('Setting connection string...')
-        if (process.platform === 'win32') {
+        if (this._platform === 'win32') {
             console.log('    on win32');
         }
         else {
-            console.log('    on linux');
+            this.setConnectionStringForLinux();
         }
 
         console.log ('Done setting connection string')
+    }
+
+
+    private setConnectionStringForLinux() {
+        let self = this;
+        let exec = require('child_process').exec;
+        exec("az", function(err, stdout, stderr) {
+            if (err) {
+                // should have err.code
+                console.log("fuck! error occured. Error code: " + err.code);
+            }
+            console.log(stdout);
+            self._coreLib.error(stderr);
+        })
     }
 }
