@@ -1,10 +1,12 @@
+#!/bin/bash
+
 # this script sets the connection string in an app service
 #
 
 # Get command line variables
-servicePrincipal = $1
-servicePrincipalTenant = $2
-servicePrincipalSecret = $3
+servicePrincipal=$1
+servicePrincipalTenant=$2
+servicePrincipalSecret=$3
 
 echo "servicePrincipal: $servicePrincipal"
 echo "servicePrincipalTenat: $servicePrincipalTenant"

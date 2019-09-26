@@ -27,7 +27,7 @@ export class ConnectionStringSetter {
 
         // ouptut inputs
         console.log("input params:")
-        console.log ("   servicePrincipal: " + servicePrincipal);
+        console.log("    servicePrincipal: " + servicePrincipal);
         console.log("    servicePrincipalTenant: " + servicePrincipalTenant);
         console.log("    servicePrincipalSecret: " + servicePrincipalSecret);
         console.log('    resourceGroup: ' + resourceGroup);
@@ -66,11 +66,11 @@ export class ConnectionStringSetter {
                                         connectionString) {
         // figure out where the bash script is to set the connectin string
         let bashScriptPath = this._libRootPath + "/updateConnectionString.sh"
-        console.log("    bash script path: " + bashScriptPath);
+        console.log("        bash script path: " + bashScriptPath);
         
         // craft the command line call
         let commandLineCall = `sh ${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
-        console.log("    commandLineCall: " + commandLineCall);
+        console.log("        commandLineCall: " + commandLineCall);
         
         // call bash script 
         let self = this;
