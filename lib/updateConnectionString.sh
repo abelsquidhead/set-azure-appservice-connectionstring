@@ -44,15 +44,17 @@ echo ""
 # This sets the default subscription
 #
 echo "Setting default azure subscription..."
-az account set \
-    --subscription $azureSubscriptionName
+responseString=$(az account set \
+    --subscription $azureSubscriptionName)
+echo "$responseString"
 echo "Done setting default subscription"
 echo ""
 
 echo "Setting connection string.."
-az webapp config connection-string set \
+responseString=$(az webapp config connection-string set \
     --name $webAppName \
     --connection-string-type "SQLAzure" \
     --resource-group $resourceGroupName \
-    --settings "$connectionStringName"="$connectionString"
+    --settings "$connectionStringName"="$connectionString")
+echo "$responseString"
 echo "Done setting connection string"
