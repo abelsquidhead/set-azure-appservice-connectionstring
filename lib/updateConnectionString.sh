@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # this script sets the connection string in an app service
 #
 

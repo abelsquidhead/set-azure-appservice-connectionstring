@@ -81,7 +81,6 @@ export class ConnectionStringSetter {
                 console.log("        error: " + err);
             }
             console.log(stdout);
-            self._coreLib.error(stderr);
             console.log("Done setting connection string");
         })
     }
