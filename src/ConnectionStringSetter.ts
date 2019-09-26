@@ -27,6 +27,9 @@ export class ConnectionStringSetter {
 
         // ouptut inputs
         console.log("input params:")
+        console.log ("   servicePrincipal: " + servicePrincipal);
+        console.log("    servicePrincipalTenant: " + servicePrincipalTenant);
+        console.log("    servicePrincipalSecret: " + servicePrincipalSecret);
         console.log('    resourceGroup: ' + resourceGroup);
         console.log('    appService: ' + appService);
         console.log('    connectionStringType: ' + connectionStringType);
@@ -50,7 +53,7 @@ export class ConnectionStringSetter {
                                              connectionString);
         }
 
-        console.log ('Done setting connection string')
+
     }
 
 
@@ -67,17 +70,19 @@ export class ConnectionStringSetter {
         
         // craft the command line call
         let commandLineCall = `sh ${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
-        console.log("commandLineCall: " + commandLineCall);
+        console.log("    commandLineCall: " + commandLineCall);
         
         // call bash script 
         let self = this;
         this._exec(commandLineCall, function(err, stdout, stderr) {
             if (err) {
                 // should have err.code
-                console.log("    fuck! error occured. Error code: " + err.code);
+                console.log("    fuck! error occured. Error code: " + err.code); 
+                console.log("    error: " + err);
             }
             console.log(stdout);
             self._coreLib.error(stderr);
+            console.log("Done setting connection string");
         })
     }
 }
