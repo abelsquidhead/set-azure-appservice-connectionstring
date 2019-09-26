@@ -54,5 +54,5 @@ az webapp config connection-string set \
     --name $webAppName \
     --connection-string-type "SQLAzure" \
     --resource-group $resourceGroupName \
-    --settings $connectionStringName="$connectionString"
+    --settings "$connectionStringName"="$connectionString"
 echo "Done setting connection string"

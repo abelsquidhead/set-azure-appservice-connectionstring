@@ -76,7 +76,7 @@ export class ConnectionStringSetter {
         console.log("    bash script path: " + bashScriptPath);
         
         // craft the command line call
-        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString} ${connectionStringName}`;
+        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} "${connectionString}" "${connectionStringName}"`;
         console.log("    commandLineCall: " + commandLineCall);
         console.log("");
         
