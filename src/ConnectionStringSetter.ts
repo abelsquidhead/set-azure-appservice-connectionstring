@@ -77,8 +77,8 @@ export class ConnectionStringSetter {
         this._exec(commandLineCall, function(err, stdout, stderr) {
             if (err) {
                 // should have err.code
-                console.log("    fuck! error occured. Error code: " + err.code); 
-                console.log("    error: " + err);
+                console.log("        fuck! error occured. Error code: " + err.code); 
+                console.log("        error: " + err);
             }
             console.log(stdout);
             self._coreLib.error(stderr);
