@@ -11,6 +11,9 @@ inputs:
   servicePrincipalSecret:
     description: 'The service principal secret'
     required: true
+  azureSubscriptionName:
+    description: 'The name of the azure subscription to log into'
+    required: true
   resourceGroup:
     description: 'The name of the resource group which the database resides in'
     required: true

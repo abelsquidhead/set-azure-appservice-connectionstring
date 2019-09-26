@@ -8,10 +8,12 @@
 servicePrincipal=$1
 servicePrincipalTenant=$2
 servicePrincipalSecret=$3
+azureSubscriptionName=$4
 
 echo "servicePrincipal: $servicePrincipal"
 echo "servicePrincipalTenat: $servicePrincipalTenant"
 echo "servicePrincipalSecret: $servicePrincipalSecret"
+echo "azureSubcriptionName: $azureSubscriptionName"
 echo ""
 
 

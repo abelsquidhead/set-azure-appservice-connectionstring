@@ -20,6 +20,7 @@ export class ConnectionStringSetter {
         let servicePrincipal: string = this._coreLib.getInput('servicePrincipal');
         let servicePrincipalTenant: string = this._coreLib.getInput('servicePrincipalTenant');
         let servicePrincipalSecret: string = this._coreLib.getInput('servicePrincipalSecret');
+        let azureSubscriptionName: string = this._coreLib.getInput('azureSubsdriptionName');
         let resourceGroup: string = this._coreLib.getInput('resourceGroup');
         let appService:string = this._coreLib.getInput('appService');
         let connectionStringType: string = this._coreLib.getInput('connectionStringType');
@@ -30,6 +31,7 @@ export class ConnectionStringSetter {
         console.log("    servicePrincipal: " + servicePrincipal);
         console.log("    servicePrincipalTenant: " + servicePrincipalTenant);
         console.log("    servicePrincipalSecret: " + servicePrincipalSecret);
+        console.log("    azureSubscriptionName: " + azureSubscriptionName);
         console.log('    resourceGroup: ' + resourceGroup);
         console.log('    appService: ' + appService);
         console.log('    connectionStringType: ' + connectionStringType);
@@ -47,6 +49,7 @@ export class ConnectionStringSetter {
             this.setConnectionStringForLinux(servicePrincipal,
                                              servicePrincipalTenant,
                                              servicePrincipalSecret,
+                                             azureSubscriptionName,
                                              resourceGroup,
                                              appService,
                                              connectionStringType,
@@ -60,6 +63,7 @@ export class ConnectionStringSetter {
     private setConnectionStringForLinux(servicePrincipal: string,  
                                         servicePrincipalTenant: string,  
                                         servicePrincipalSecret: string,
+                                        azureSubscriptionName: string,
                                         resourceGroup: string,
                                         appService: string,
                                         connectionStringType: string,
@@ -69,7 +73,7 @@ export class ConnectionStringSetter {
         console.log("        bash script path: " + bashScriptPath);
         
         // craft the command line call
-        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
+        let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString}`;
         console.log("        commandLineCall: " + commandLineCall);
         
         // call bash script 
