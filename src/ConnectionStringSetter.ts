@@ -41,12 +41,11 @@ export class ConnectionStringSetter {
         console.log('');
 
         // setting connection string based on linux/win platform
-        console.log('Setting connection string...')
         if (this._platform === 'win32') {
-            console.log('    on win32');
+            console.log('on win32');
         }
         else {
-            console.log('    on linux');
+            console.log('on linux');
             this.setConnectionStringForLinux(servicePrincipal,
                                              servicePrincipalTenant,
                                              servicePrincipalSecret,
@@ -74,11 +73,11 @@ export class ConnectionStringSetter {
     {
         // figure out where the bash script is to set the connectin string
         let bashScriptPath = this._libRootPath + "/updateConnectionString.sh"
-        console.log("        bash script path: " + bashScriptPath);
+        console.log("    bash script path: " + bashScriptPath);
         
         // craft the command line call
         let commandLineCall = `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} ${connectionString} ${connectionStringName}`;
-        console.log("        commandLineCall: " + commandLineCall);
+        console.log("    commandLineCall: " + commandLineCall);
         console.log("");
         
         // call bash script 
