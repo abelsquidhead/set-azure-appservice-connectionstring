@@ -17,5 +17,17 @@ export class ConnectionStringSetter {
         console.log('appService: ' + this.appService);
         console.log('connectionStringType: ' + this.connectionStringType);
         console.log('connectionString: ' + this.connectionString);
+
+        console.log('');
+
+        console.log('Setting connection string...')
+        if (process.platform === 'win32') {
+            console.log('    on win32');
+        }
+        else {
+            console.log('    on linux');
+        }
+
+        console.log ('Done setting connection string')
     }
 }
