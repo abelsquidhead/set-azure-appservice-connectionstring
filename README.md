@@ -1,6 +1,6 @@
 # set-azure-appservice-connectionstring
 
-This action sets a connection string value in an Azure App Service settings
+This action sets a connection string value in an Azure App Service settings. This action works for both windows and ubuntu vms.
 
 ## Usage
 
