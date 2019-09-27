@@ -117,7 +117,7 @@ export class ConnectionStringSetter {
         console.log("    bash script path: " + bashScriptPath);
 
         // craft the command line call
-        let commandLineCall = "powershell -command " + `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} "${connectionString}" "${connectionStringName}"`;
+        let commandLineCall = "powershell -command " + `${bashScriptPath} -servicePrincipal ${servicePrincipal} -servicePrincipalTenant ${servicePrincipalTenant} -servicePrincipalSecret ${servicePrincipalSecret} -azureSubscriptionName ${azureSubscriptionName} -resourceGroup ${resourceGroup} -appService ${appService} -connectionStringType ${connectionStringType} -connectionString "${connectionString}" -connectionStringName "${connectionStringName}"`;
         console.log("    commandLineCall: " + commandLineCall);
         console.log("");
 
@@ -126,8 +126,8 @@ export class ConnectionStringSetter {
         this._exec(commandLineCall, function(err, stdout, stderr) {
         if (err) {
         // should have err.code
-        // console.log("        fuck! error occured. Error code: " + err.code); 
-        // console.log("        error: " + err);
+        console.log("        fuck! error occured. Error code: " + err.code); 
+        console.log("        error: " + err);
         }
         console.log(stdout);
         console.log("Done setting connection string");
