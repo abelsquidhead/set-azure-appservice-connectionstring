@@ -113,17 +113,17 @@ export class ConnectionStringSetter {
         connectionStringName: string) 
     {
         // figure out where the bash script is to set the connectin string
-        let bashScriptPath = this._libRootPath + "/updateConnectionString.sh"
+        let bashScriptPath = this._libRootPath + "/updateConnectionString.ps1"
         console.log("    bash script path: " + bashScriptPath);
 
         // craft the command line call
-        let commandLineCall = "bash " + `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} "${connectionString}" "${connectionStringName}"`;
+        let commandLineCall = "powershell -command " + `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} "${connectionString}" "${connectionStringName}"`;
         console.log("    commandLineCall: " + commandLineCall);
         console.log("");
 
         // call bash script 
         let self = this;
-        this._exec("sh " + commandLineCall, function(err, stdout, stderr) {
+        this._exec(commandLineCall, function(err, stdout, stderr) {
         if (err) {
         // should have err.code
         // console.log("        fuck! error occured. Error code: " + err.code); 
