@@ -92,4 +92,37 @@ export class ConnectionStringSetter {
             console.log("Done setting connection string");
         })
     }
+
+    private setConnectionStringForWindows(servicePrincipal: string,  
+        servicePrincipalTenant: string,  
+        servicePrincipalSecret: string,
+        azureSubscriptionName: string,
+        resourceGroup: string,
+        appService: string,
+        connectionStringType: string,
+        connectionString: string,
+        connectionStringName: string) 
+    {
+        // figure out where the bash script is to set the connectin string
+        let bashScriptPath = this._libRootPath + "/updateConnectionString.sh"
+        console.log("    bash script path: " + bashScriptPath);
+
+        // craft the command line call
+        let commandLineCall = "bash " + `${bashScriptPath} ${servicePrincipal} ${servicePrincipalTenant} ${servicePrincipalSecret} ${azureSubscriptionName} ${resourceGroup} ${appService} ${connectionStringType} "${connectionString}" "${connectionStringName}"`;
+        console.log("    commandLineCall: " + commandLineCall);
+        console.log("");
+
+        // call bash script 
+        let self = this;
+        this._exec("sh " + commandLineCall, function(err, stdout, stderr) {
+        if (err) {
+        // should have err.code
+        // console.log("        fuck! error occured. Error code: " + err.code); 
+        // console.log("        error: " + err);
+        }
+        console.log(stdout);
+        console.log("Done setting connection string");
+        })
+    }
+
 }
