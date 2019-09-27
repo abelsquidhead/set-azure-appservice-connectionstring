@@ -43,6 +43,15 @@ export class ConnectionStringSetter {
         // setting connection string based on linux/win platform
         if (this._platform === 'win32') {
             console.log('on win32');
+            this.setConnectionStringForWindows(servicePrincipal,
+                servicePrincipalTenant,
+                servicePrincipalSecret,
+                azureSubscriptionName,
+                resourceGroup,
+                appService,
+                connectionStringType,
+                connectionString,
+                connectionStringName);
         }
         else {
             console.log('on linux');
